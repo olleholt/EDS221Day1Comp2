@@ -1,0 +1,23 @@
+---
+title: "Toolik chorophyll concentrations"
+author: "Olivia"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(skimr)
+library(here)
+
+toolik_chlorophyll_data <- read_csv(here::here("data","toolik_chlorophyll.csv"), na = ".") %>% 
+  clean_names() %>% 
+  rename(chl_a = active_chl_a_ug_l)
+
+
+```
+```{r}
+ggplot(data = toolik_chlorophyll_data, aes(x = chl_a))+
+  geom_histogram()
+```
+
